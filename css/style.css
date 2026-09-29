@@ -1,33 +1,21 @@
 :root {
-
     --background-color: #ffffff;
-
     --text-color: #222222;
-
     --primary-color: #4f46e5;
-
     --card-color: #f5f5f5;
-
     --spacing-small: 8px;
-
     --spacing-medium: 16px;
-
     --spacing-large: 32px;
 }
 
 [data-theme="dark"] {
-
     --background-color: #121212;
-
     --text-color: #ffffff;
-
     --card-color: #1f1f1f;
 }
 
 body {
-
     background-color: var(--background-color);
-
     color: var(--text-color);
 }
 
@@ -35,14 +23,19 @@ body {
     display: none;
 }
 
+.nav-menu.active {
+    display: flex;
+    flex-direction: column;
+}
+
 #hamburger {
     display: block;
 }
 
 @media (min-width: 768px) {
-
     .nav-menu {
         display: flex;
+        flex-direction: row;
     }
 
     #hamburger {
@@ -51,7 +44,6 @@ body {
 }
 
 @media (min-width: 1024px) {
-
     .container {
         max-width: 1200px;
         margin: 0 auto;
