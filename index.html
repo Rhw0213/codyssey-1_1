@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta 
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+
+        <title>류현우 Portfolio</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="js/script.js" defer></script></script>
+    </head>
+
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="#hero" class="logo">
+                    Ryu.dev
+                </a>
+
+                <ul class="nav-menu">
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#skills">Skills</a>
+                    </li>
+                    <li>
+                        <a href="#projects">Projects</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <button id="theme-toggle">
+                     🌙
+                </button>
+
+                <button id = "hamburger">
+                      ☰
+                </button>
+            </nav>
+        </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <h1>
+                안녕하세요.<br>
+                류현우 입니다.
+            </h1>
+
+            <p>
+                개발 공부를 하고 있습니다.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects">
+                    프로젝트 보기
+                </a>
+
+                <a href="#contact">
+                    연락하기
+                </a>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <img
+                src="images/image.jpg"
+                alt="사진"
+            >
+            
+            <p>
+                안녕하세요 개발을 공부하고 있습니다.
+            </p>
+        </section>
+
+        <section id = "skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>아직없음</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div id="project-container">
+                프로젝트를 불러오는중...
+            </div>
+        </section>
+
+        <section id="contact">
+
+    <h2>Contact</h2>
+
+    <form id="contact-form">
+
+        <div>
+            <label for="name">
+                이름
+            </label>
+
+            <input
+                type="text"
+                id="name"
+            >
+
+            <span id="name-error"></span>
+        </div>
+
+        <div>
+            <label for="email">
+                이메일
+            </label>
+
+            <input
+                type="email"
+                id="email"
+            >
+
+            <span id="email-error"></span>
+        </div>
+
+        <div>
+            <label for="message">
+                메시지
+            </label>
+
+            <textarea id="message"></textarea>
+
+            <span id="message-error"></span>
+        </div>
+
+        <button type="submit">
+            보내기
+        </button>
+
+    </form>
+
+</section>
+    </main>
+
+    <footer>
+       <p>
+        © 2026 류현우
+        </p>
+
+        <a
+            href="https://github.com/Rhw0213"
+            target="_blank"
+        >
+            GitHub
+        </a>
+    </footer>
+    </body>
+</html>
