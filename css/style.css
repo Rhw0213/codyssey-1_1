@@ -1,51 +1,644 @@
+
+/* ========================================
+   1. CSS 변수
+======================================== */
 :root {
-    --background-color: #ffffff;
-    --text-color: #222222;
-    --primary-color: #4f46e5;
-    --card-color: #f5f5f5;
-    --spacing-small: 8px;
-    --spacing-medium: 16px;
-    --spacing-large: 32px;
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-color: #1e293b;
+  --sub-text-color: #64748b;
+  --primary-color: #2563eb;
+  --border-color: #e2e8f0;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  --font-main: Arial, sans-serif;
+  --section-spacing: 80px;
 }
 
+/* 다크 모드 */
 [data-theme="dark"] {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --card-color: #1f1f1f;
+  --bg-color: #0f172a;
+  --surface-color: #1e293b;
+  --text-color: #f1f5f9;
+  --sub-text-color: #94a3b8;
+  --primary-color: #60a5fa;
+  --border-color: #334155;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================
+   2. 기본 스타일
+======================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.7;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: var(--section-spacing) 0;
+  scroll-margin-top: 80px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  margin: 10px 0 40px;
+  text-align: center;
+  color: var(--sub-text-color);
+}
+
+/* ========================================
+   3. Header & Navigation
+======================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+header.scrolled {
+  background: var(--bg-color);
+  box-shadow: var(--shadow);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--primary-color);
 }
 
 .nav-menu {
-    display: none;
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 20px;
+  background: var(--surface-color);
+  box-shadow: var(--shadow);
 }
 
 .nav-menu.active {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-#hamburger {
-    display: block;
+.nav-menu a {
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
+.nav-menu a:hover {
+  color: var(--primary-color);
+}
+
+.menu-toggle {
+  display: block;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+
+#theme-toggle {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  transition: background-color 0.3s;
+}
+
+/* ========================================
+   4. Hero
+======================================== */
+.hero {
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.hero-greeting {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 20px 0;
+  font-size: 2.2rem;
+  line-height: 1.4;
+}
+
+.hero h1 span {
+  color: var(--primary-color);
+}
+
+.hero-description {
+  color: var(--sub-text-color);
+  font-size: 1.1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+/* 버튼 */
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: #ffffff;
+  border: 2px solid var(--primary-color);
+}
+
+[data-theme="dark"] .btn-primary {
+  color: #0f172a;
+}
+
+.btn-outline {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+/* ========================================
+   5. About
+======================================== */
+#about {
+  background: var(--surface-color);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--primary-color);
+}
+
+.about-text {
+  max-width: 650px;
+  text-align: center;
+}
+
+.about-text h3 {
+  font-size: 1.5rem;
+}
+
+.about-text p {
+  color: var(--sub-text-color);
+}
+
+/* ========================================
+   6. Skills
+======================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 24px;
+}
+
+.skill-card {
+  padding: 30px 20px;
+  text-align: center;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+}
+
+.skill-card h3 {
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  color: var(--sub-text-color);
+}
+
+/* ========================================
+   7. Projects
+======================================== */
+#projects {
+  background: var(--surface-color);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  background: var(--bg-color);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  overflow-wrap: anywhere;
+}
+
+.project-card p {
+  color: var(--sub-text-color);
+}
+
+.project-card a {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.project-filters:empty {
+  display: none;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s;
+}
+
+.filter-btn.active {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+#project-status {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--sub-text-color);
+}
+
+#project-status:empty {
+  display: none;
+}
+
+#project-status button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* ========================================
+   8. Contact
+======================================== */
+#contact {
+  background: var(--bg-color);
+}
+
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 28px;
+  background: var(--surface-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.error-message {
+  min-height: 20px;
+  color: #dc2626;
+  font-size: 0.85rem;
+}
+
+#contact-form button {
+  width: 100%;
+}
+
+#form-result {
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ========================================
+   9. Footer
+======================================== */
+footer {
+  padding: 30px 0;
+  background: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 0;
+  color: var(--sub-text-color);
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* ========================================
+   10. Scroll Top
+======================================== */
+#scroll-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 24px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+#scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+   11. 스크롤 애니메이션
+======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   12. 태블릿 768px 이상
+======================================== */
 @media (min-width: 768px) {
-    .nav-menu {
-        display: flex;
-        flex-direction: row;
-    }
+  .hero h1 {
+    font-size: 3rem;
+  }
 
-    #hamburger {
-        display: none;
-    }
+  .section {
+    padding: 100px 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .nav-menu.active {
+    flex-direction: row;
+  }
+
+  .nav-menu a {
+    font-size: 0.9rem;
+  }
+
+  .about-content {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .about-text {
+    text-align: left;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
+/* ========================================
+   13. 데스크톱 1024px 이상
+======================================== */
 @media (min-width: 1024px) {
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+  .hero h1 {
+    font-size: 3.8rem;
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+  }
+
+  .nav-menu {
+    gap: 30px;
+  }
+
+  .nav-menu a {
+    font-size: 1rem;
+  }
+
+  .about-image img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ========================================
+   14. 움직임 최소화 설정
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
